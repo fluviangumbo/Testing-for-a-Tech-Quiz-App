@@ -1,0 +1,65 @@
+[
+    {
+        "question": "Which movie is directed by David Lean?",
+        "answers": [
+            {
+                "text": "Mission Impossible",
+                "isCorrect": false
+            },
+            {
+                "text": "A Knight's Tale",
+                "isCorrect": false
+            },
+            {
+                "text": "Bridge on the River Kwai",
+                "isCorrect": true
+            },
+            {
+                "text": "Blood Simple",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "Who starts shooting at the moon in Tombstone?",
+        "answers": [
+            {
+                "text": "Johnny Ringo",
+                "isCorrect": false
+            },
+            {
+                "text": "Curly Bill",
+                "isCorrect": true
+            },
+            {
+                "text": "Wyatt Earp",
+                "isCorrect": false
+            },
+            {
+                "text": "Doc Holliday",
+                "isCorrect": false
+            }
+        ]
+    },
+    {
+        "question": "How many rings of power were given to men in the mythology of Lord of the Rings?",
+        "answers": [
+            {
+                "text": "5",
+                "isCorrect": false
+            },
+            {
+                "text": "3",
+                "isCorrect": false
+            },
+            {
+                "text": "7",
+                "isCorrect": false
+            },
+            {
+                "text": "9",
+                "isCorrect": true
+            }
+        ]
+    }
+]
