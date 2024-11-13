@@ -1,9 +1,7 @@
 import React from 'react';
 import Quiz from '../../client/src/components/Quiz';
 
-import mockQuestions from '../fixtures/questions.json';
-
-describe('<Quiz />', () => {
+describe('Quiz before start', () => {
   it('renders', () => {
     // see: https://on.cypress.io/mounting-react
     cy.mount(<Quiz />)
@@ -13,9 +11,29 @@ describe('<Quiz />', () => {
     cy.mount(<Quiz />)
     cy.get('button').should('have.text', 'Start Quiz')
   });
+})
 
-  it('should give a quiz when prompted', () => {
+describe('Quiz after start', () => {
+  beforeEach(() => {
     cy.mount(<Quiz />)
-    cy.intercept('GET', '/api/questions/random', { fixture: 'questions.json', status: 200 }).as('fixtureQuestions');
+    cy.intercept({
+      method: 'GET',
+      url: '/api/questions/random'
+    },
+    {
+      fixture: 'questions.json',
+      statusCode: 200
+    }
+    ).as ('fixtureQuestions');
+    cy.get('button').click();
+  });
+  
+  it('should have fetched the fixture questions', () => {
+    cy.wait('@fixtureQuestions').then((intercept) => {
+      assert.isNotNull(intercept.response?.body, 'API call returned data');
+
+      cy.get('h2').should('contain.text', 'Which movie is directed by David Lean?');
+      cy.get('[class="mt-3"]').children().eq(2).should('contain.text', 'Bridge on the River Kwai');
+    });
   });
 })
